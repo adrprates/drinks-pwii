@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drinks</title>
+</head>
+<body>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Volume</th>
+                <th scope="col">Alcólica</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Fabricante</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="drink : ${listDrinks}">
+            <td th:text="${drink.id}"></td>
+            <td th:text="${drink.name}"></td>
+            <td th:text="${drink.type}"></td>
+            <td th:text="${drink.volume}"></td>
+            <td th:text="${drink.acoholic}"></td>
+            <td th:text="${drink.price}"></td>
+            <td th:text="${drink.manufacturer}"></td>
+        </tbody>
+    </table>
+</body>
+</html>
