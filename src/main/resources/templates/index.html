@@ -1,40 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Drinks</title>
-</head>
-<body>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Volume</th>
-                <th scope="col">Alcólica</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Fabricante</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="drink : ${listDrinks}">
-            <td th:text="${drink.id}"></td>
-            <td th:text="${drink.name}"></td>
-            <td th:text="${drink.type}"></td>
-            <td th:text="${drink.volume}"></td>
-            <td th:text="${drink.acoholic}"></td>
-            <td th:text="${drink.price}"></td>
-            <td th:text="${drink.manufacturer}"></td>
-            <td>
-                <a th:href="@{/drink/edit/{id}(id=${drink.id})}">Editar</a>
-            </td>
-            <td>
-                <a th:href="@{/drink/delete/{id}(id=${drink.id})}">Deletar</a>
-            </td>
-
-
-        </tbody>
-    </table>
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <th:block
+    th:replace="~{/../fragments/head :: head('Listar Produto')}"
+  ></th:block>
+    <body>
+        <th:block th:replace="~{/../fragments/head :: header}"></th:block>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Volume</th>
+                    <th scope="col">Alcólica</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Fabricante</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="drink : ${listDrinks}">
+                <td th:text="${drink.id}"></td>
+                <td th:text="${drink.name}"></td>
+                <td th:text="${drink.type}"></td>
+                <td th:text="${drink.volume}"></td>
+                <td th:text="${drink.acoholic}"></td>
+                <td th:text="${drink.price}"></td>
+                <td th:text="${drink.manufacturer}"></td>
+                <td>
+                    <a th:href="@{/drink/edit/{id}(id=${drink.id})}">Editar</a>
+                </td>
+                <td>
+                    <a th:href="@{/drink/delete/{id}(id=${drink.id})}">Deletar</a>
+                </td>
+            </tbody>
+        </table>
+        <th:block th:replace="~{/../fragments/footer :: footer}"></th:block>
+    </body>
 </html>

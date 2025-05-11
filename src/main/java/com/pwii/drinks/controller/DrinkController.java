@@ -2,9 +2,11 @@ package com.pwii.drinks.controller;
 
 import com.pwii.drinks.model.Drink;
 import com.pwii.drinks.service.DrinkService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,7 +49,10 @@ public class DrinkController {
     }
 
     @PostMapping("/drink/save")
-    public String save(@ModelAttribute("drink") Drink drink){
+    public String save(@ModelAttribute @Valid Drink drink, BindingResult result){
+        if(result.hasErrors()){
+            return "drink/create";
+        }
         drinkService.saveDrink(drink);
         return "redirect:/drink";
     }
