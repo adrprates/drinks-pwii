@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class DrinkController {
@@ -37,6 +38,32 @@ public class DrinkController {
     public String deleteDrink(@PathVariable(value = "id") long id){
         drinkService.deleteDrinkById(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/drink/create")
+    public String create(Model model){
+        model.addAttribute("drink", new Drink());
+        return "drink/create";
+    }
+
+    @PostMapping("/drink/save")
+    public String save(@ModelAttribute("drink") Drink drink){
+        drinkService.saveDrink(drink);
+        return "redirect:/drink";
+    }
+
+    @GetMapping("/drink/delete/{id}")
+    public String delete(@PathVariable(value = "id") Long id){
+        drinkService.deleteDrinkById(id);
+        return "redirect:/drink";
+    }
+
+
+    @GetMapping("/drink/edit/{id}")
+    public String edit(@PathVariable(value = "id") Long id, Model model){
+        Drink drink = drinkService.getDrinkById(id);
+        model.addAttribute("drink", drink);
+        return "drink/edit";
     }
 
 

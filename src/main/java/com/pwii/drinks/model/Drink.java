@@ -21,10 +21,10 @@ public class Drink {
     private String type;
 
     @Column(name = "volume", nullable = false)
-    private double volume;
+    private String volume;
 
     @Column(name = "alcoholic", nullable = false)
-    private boolean alcoholic;
+    private String alcoholic;
 
     @Column(name = "price", nullable = false)
     private double price;

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Bebida</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastrar Bebida</h1>
+        <form action="#" th:action="@{/bebida/save}" th:object="${bebida}" method="POST">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Nome:</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{name}" class="form-control" id="name" name="name" placeholder="Digite o nome da bebida">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="type" class="col-sm-2 col-form-label">Tipo:</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{type}" class="form-control" id="type" name="type" placeholder="Digite o tipo da bebida">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="volume" class="col-sm-2 col-form-label">Volume:</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{volume}" class="form-control" id="volume" name="volume" placeholder="Digite o volume da bebida (mL ou L)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="alcoholic" class="col-sm-2 col-form-label">Bebida Alcoólica?</label>
+                <div class="col-sm-10">
+                    <select name="alcoholic" id="alcoholic" th:field="*{alcoholic}" class="form-control">
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="price">Preço:</label>
+                <div class="col-sm-10">
+                    <input type="number" th:field="*{price}" class="form-control" id="price" name="price" step="0.01"
+                        placeholder="Digite o preço da bebida" >
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="manufacturer">Fabricante:</label>
+                <div class="col-sm-10">
+                    <input type="number" th:field="*{manufacturer}" class="form-control" id="manufacturer" name="manufacturer"
+                        placeholder="Digite o nome do fabricante">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info col-2"> Cadastrar Bebida</button>
+        </form>
+    </div>
+</body>
+</html>

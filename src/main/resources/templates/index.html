@@ -26,6 +26,14 @@
             <td th:text="${drink.acoholic}"></td>
             <td th:text="${drink.price}"></td>
             <td th:text="${drink.manufacturer}"></td>
+            <td>
+                <a th:href="@{/drink/edit/{id}(id=${drink.id})}">Editar</a>
+            </td>
+            <td>
+                <a th:href="@{/drink/delete/{id}(id=${drink.id})}">Deletar</a>
+            </td>
+
+
         </tbody>
     </table>
 </body>
