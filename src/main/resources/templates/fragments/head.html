@@ -1,4 +1,4 @@
-<head th:fragment="head(title)">
+<head th:fragment="head(title)" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
   <meta charset="ISO-8859-1" />
   <title th:text="${title}"></title>
 
@@ -45,7 +45,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown active">
+        <li sec:authorize="hasAuthority('Admin')" class="nav-item dropdown active">
           <a
             class="nav-link dropdown-toggle"
             th:href="@{/drink}"
@@ -59,12 +59,16 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" th:href="@{/drink}">Listar</a>
-            <a class="dropdown-item" th:href="@{/drink/create}">Cadastrar</a>
+            <a sec:authorize="hasAuthority('Admin')" class="dropdown-item" th:href="@{/drink/create}">Cadastrar</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
       </ul>
+      <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit" class="btn my-2 my-sm-0">Sair</button>
+      </form>
     </div>
   </div>
 </nav>
