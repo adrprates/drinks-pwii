@@ -1,7 +1,8 @@
-package com.pwii.drinks.service;
+package com.pwii.drinks.service.impl;
 
 import com.pwii.drinks.model.Drink;
 import com.pwii.drinks.repository.DrinkRepository;
+import com.pwii.drinks.service.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
