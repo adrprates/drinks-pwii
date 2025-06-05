@@ -41,7 +41,6 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider());
 
         return http.build();
-
     }
 
     @Bean

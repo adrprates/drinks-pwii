@@ -27,7 +27,7 @@ public class DrinkController {
     @GetMapping("/drink")
     public String index(Model model){
         model.addAttribute("listDrinks", drinkService.getAllDrinks());
-        return "drink/index";
+        return "index";
     }
 
     @GetMapping("/save-drink")
@@ -45,13 +45,13 @@ public class DrinkController {
     @GetMapping("/drink/create")
     public String create(Model model){
         model.addAttribute("drink", new Drink());
-        return "drink/create";
+        return "create";
     }
 
     @PostMapping("/drink/save")
     public String save(@ModelAttribute @Valid Drink drink, BindingResult result){
         if(result.hasErrors()){
-            return "drink/create";
+            return "create";
         }
         drinkService.saveDrink(drink);
         return "redirect:/drink";
@@ -68,8 +68,6 @@ public class DrinkController {
     public String edit(@PathVariable(value = "id") Long id, Model model){
         Drink drink = drinkService.getDrinkById(id);
         model.addAttribute("drink", drink);
-        return "drink/edit";
+        return "edit";
     }
-
-
 }
